@@ -3,6 +3,7 @@ package ru.netology.data;
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,7 +25,7 @@ public class SQLHelper {
     public static DataHelper.VerificationCode getVerificationCode() {
         var codeSQL = "SELECT code FROM auth_codes ORDER BY created DESC LIMIT 1";
         var conn = getConn();
-        return QUERY_RUNNER.query(conn, codeSQL, new BeanHandler<>(DataHelper.VerificationCode.class));
+        return QUERY_RUNNER.query(conn, codeSQL, new ScalarHandler<>());
     }
 
     // метод очищающий БД

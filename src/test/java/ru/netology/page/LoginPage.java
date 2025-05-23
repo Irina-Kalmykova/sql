@@ -20,9 +20,13 @@ public class LoginPage {
 
     // метод для валидного логина который возвращает VerificationPage
     public VerificationPage validLogin(DataHelper.AuthInfo info) {
+        login(info);
+        return new VerificationPage();
+    }
+
+    private void login(DataHelper.AuthInfo info) {
         loginField.setValue(info.getLogin());
         passwordField.setValue(info.getPassword());
         loginButton.click();
-        return new VerificationPage();
     }
 }

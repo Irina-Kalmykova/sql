@@ -11,17 +11,14 @@ public class VerificationPage {
     private final SelenideElement verifyButton = $("[data-test-id=action-verify]");
     private final SelenideElement errorNotification = $("[data-test-id='error-notification'] .notification__content");
 
-    //метод проверяющий видимость страницы верификации
-    public void veryfyVerificationPageVisiblity() {
+    public VerificationPage() {
         codeField.shouldBe(visible);
     }
 
-    // метод проверяющий сообщение об ошибке
     public void verifyErrorNotification(String expectedText) {
         errorNotification.shouldHave(exactText(expectedText)).shouldBe(visible);
     }
 
-    // метод для выполнения валидной верификации
     public DashboardPage validVerify(String verificationCode) {
         verify(verificationCode);
         return new DashboardPage();
@@ -31,5 +28,9 @@ public class VerificationPage {
     public void verify(String verificationCode) {
         codeField.setValue(verificationCode);
         verifyButton.click();
+    }
+
+    public void verifyVerificationPageVisiblity() {
+
     }
 }

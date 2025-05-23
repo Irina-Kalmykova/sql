@@ -39,6 +39,10 @@ public class DataHelper {
         return new VerificationCode(FAKER.numerify("######"));
     }
 
+    public static AuthInfo getAuthInfoWithTestData() {
+        return new AuthInfo("vasya", "qwerty123");
+    }
+
     // дата класс для создания объекта с информацией об аутентификации
     @Value
     public static class AuthInfo {
